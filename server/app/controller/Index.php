@@ -3,44 +3,21 @@
 namespace app\controller;
 
 use app\BaseController;
+use think\facade\Db;
 use think\facade\View;
 
 class Index extends BaseController
 {
     public function index()
     {
-        // 使用视图输出过滤
-        return View::fetch();
+        //分页查询
+//        Db::class::name('suricata_logs')->paginate(10);
+        $data = Db::class::name('suricata_logs')->paginate(10);
+        return View::fetch('index/index', ['data' => $data]);
     }
 
-    public function host_list()
+    public function hello($name = 'ThinkPHP8')
     {
-        // 使用视图输出过滤
-        return View::fetch();
+        return 'hello,' . $name;
     }
-
-    public function alert_list()
-    {
-        // 使用视图输出过滤
-        return View::fetch();
-    }
-
-    public function system_setting()
-    {
-        // 使用视图输出过滤
-        return View::fetch();
-    }
-
-
-    public function bug_list()
-    {
-        // 使用视图输出过滤
-        return View::fetch();
-    }
-    public function logaudit_list()
-    {
-        // 使用视图输出过滤
-        return View::fetch();
-    }
-
 }

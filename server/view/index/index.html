@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<table class="table">
+    <thead>
+
+    <tr>
+        <th scope="col">序号</th>
+        <th scope="col">事件类型</th>
+        <th scope="col">来源IP</th>
+        <th scope="col">来源端口</th>
+        <th scope="col">目标IP</th>
+        <th scope="col">目标端口</th>
+        <th scope="col">json数据</th>
+    </tr>
+    </thead>
+    <tbody>
+    {volist name="data" id="src"}
+    <tr>
+        <th scope="row">{$src.id}</th>
+        <td>{$src.event_type}</td>
+        <td>{$src.src_ip}</td>
+        <td>{$src.src_port}</td>
+        <td>{$src.dest_ip}</td>
+        <td>{$src.dest_port}</td>
+        <td><code>
+        <span class="d-inline-block text-truncate" style="max-width: 4000px;">{$src.json_data}
+</span></code></td>
+    </tr>
+    {/volist}
+    </tr>
+    </tbody>
+</table>
+{$data|raw}
+</body>
+</html>
